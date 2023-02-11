@@ -1,0 +1,33 @@
+<%= search_form_for @q do |f| %>
+  <% if @show_user %>
+  <div class="form-group">
+    <%= f.label :user_username_cont, "Search by username" %>
+    <%= f.search_field :user_username_cont, class: 'form-control' %>
+  </div>
+  <% end %>
+  <% if @show_book %>
+  <div class="form-group">
+    <%= f.label :book_name_cont, "Search by book name" %>
+    <%= f.search_field :book_name_cont, class: 'form-control' %>
+  </div>
+  <% end %>
+  <%= link_to "Clear", request.path, class: "btn btn-default" %>
+  <%= f.submit "Search", class: 'btn btn-primary btn-sm' %>
+<% end %>
+
+<%#= search_form_for @q do |f| %>
+<!--<div class="row">-->
+<!--  <div class="col-md-6">-->
+    <%#= f.label :user_username_cont, "Search by username" %>
+    <%#= f.search_field :user_username_cont, class: 'form-control' %>
+<!--  </div>-->
+<!--  <div class="col-md-6">-->
+    <%#= f.label :book_name_cont, "Search by book name" %>
+    <%#= f.search_field :book_name_cont, class: 'form-control' %>
+<!--  </div>-->
+<!--  <div class="col-md-12 text-center mt-3">-->
+  <%#= link_to "Clear", request.path, class: "btn btn-default" %>
+  <%#= f.submit "Search", class: 'btn btn-primary btn-sm' %>
+<!--  </div>-->
+<!--</div>-->
+<%# end %>

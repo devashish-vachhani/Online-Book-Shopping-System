@@ -11,13 +11,15 @@ class ReviewsController < ApplicationController
       @show_book = false
     elsif params[:user_id]
       @user = User.find(params[:user_id])
-      @reviews = @user.reviews
+      @q = @user.reviews.ransack(params[:q])
+      @reviews = @q.result(distinct: true)
       @show_user = false
       @show_book = true
     else
-      @reviews = Review.all
       @show_user = true
       @show_book = true
+      @q = Review.ransack(params[:q])
+      @reviews = @q.result(distinct: true)
     end
   end
 
