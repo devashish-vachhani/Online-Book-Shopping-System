@@ -6,12 +6,15 @@ class BooksController < ApplicationController
   def index
     # @q = Book.ransack(params[:q])
     # @books = @q.result(distinct:true)
-    @books = Book.all
-    @book = Book.new
+      @books = Book.all
   end
 
   # GET /books/1 or /books/1.json
   def show
+    @book = Book.find(params[:id])
+    @reviews = @book.reviews
+    @show_user = true
+    @show_book = false
   end
 
   # GET /books/new

@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Purchase History</h1>
+
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th>Book</th>
+    <th>Quantity</th>
+    <th>Total price</th>
+    <th>Credit card number</th>
+    <th>Address</th>
+    <th>Phone number</th>
+  </tr>
+  </thead>
+  <tbody>
+    <div id="transactions">
+      <% @transactions.each do |transaction| %>
+        <tr>
+            <%= render transaction %>
+        </tr>
+      <% end %>
+    </div>
+  </tbody>
+</table>
+<%= link_to 'Back to dashboard', authenticated_root_path %>

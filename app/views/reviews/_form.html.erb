@@ -1,0 +1,31 @@
+<%= form_with(model: review, html: { class: "row g-3" }) do |form| %>
+  <% if review.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+        <% review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="col-12">
+      <%= form.label :book_name, "Book" %>
+      <%= form.text_field :book_name, value: @book.name, disabled: true, class: 'form-control' %>
+    </div>
+    <div class="col-12">
+      <%= form.label :rating %>
+      <%= form.select :rating, options_for_select([["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]]), class: 'form-control' %>
+    </div>
+    <div class="col-12">
+      <%= form.label :review %>
+      <%= form.text_area :review, class:'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.hidden_field :book_id, value: @book.id %>
+    </div>
+    <div class="col-12">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+<% end %>

@@ -1,0 +1,10 @@
+<div id="<%= dom_id review %>">
+  <% if @show_user %>
+    <p>User: <%= review.user.username %></p>
+  <% end %>
+  <% if @show_book %>
+    <p>Book: <%= review.book.title %></p>
+  <% end %>
+  <p>Rating: <%= review.rating %></p>
+  <p>Review: <%= review.review %></p>
+</div>

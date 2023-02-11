@@ -3,25 +3,24 @@
     <strong>Name:</strong>
     <%= book.name %>
   </p>
-
   <p>
     <strong>Author:</strong>
     <%= book.author %>
   </p>
-
   <p>
     <strong>Publisher:</strong>
     <%= book.publisher %>
   </p>
-
   <p>
     <strong>Price:</strong>
-    <%= book.price %>
+    $<%= book.price %>
   </p>
-
   <p>
     <strong>Stock:</strong>
     <%= book.stock %>
   </p>
-
+  <p>
+    <strong>Average rating:</strong>
+    <%= book.reviews.average(:rating) %>
+  </p>
 </div>

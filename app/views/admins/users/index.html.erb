@@ -7,8 +7,8 @@
     <th>Name</th>
     <th>Email</th>
     <th>Address</th>
-    <th>Credit card number</th>
     <th>Phone number</th>
+    <th>Credit card number</th>
   </tr>
   </thead>
   <tbody>
@@ -18,12 +18,12 @@
       <td><%= user.name %></td>
       <td><%= user.email %></td>
       <td><%= user.address %></td>
-      <td><%= user.credit_card_number %></td>
       <td><%= user.phone_number %></td>
+      <td><%= user.credit_card_number %></td>
       <td><%= link_to "Edit", edit_admins_user_path(user), class: "btn btn-primary btn-sm" %></td>
       <td><%= button_to "Delete", [:admins, user], data: { turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
-<%= link_to "Back", authenticated_root_path %>
+<%= link_to "Back to dashboard", authenticated_root_path %>

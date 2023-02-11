@@ -2,11 +2,13 @@
 <div class="card">
   <div class="card-body">
     <%= render @book %>
-      <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-primary' %>
-      <br/>
-      <br/>
-      <%= button_to "Destroy", @book, data: { turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %>
-    <br/>
-    <%= link_to "Back to books", books_path %>
+    <% if can? :update, Book %><%= link_to 'Edit', edit_book_path(@book), class:'btn btn-primary btn-sm' %><% end %>
+    <% if can? :delete, Book %><%= button_to "Delete", @book, form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-danger btn-sm" %><% end %>
   </div>
 </div>
+
+<% @reviews.each do |review| %>
+  <%= render review %>
+<% end %>
+
+<%= link_to "Back to books", books_path %>
