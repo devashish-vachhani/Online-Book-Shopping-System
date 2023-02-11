@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  has_many :transactions, dependent: :destroy
   validates :name, :author, :publisher, :price, :stock, presence: true
 
   def average_rating
