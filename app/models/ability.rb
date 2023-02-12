@@ -25,6 +25,6 @@ class Ability
   def user_rules(user)
     can :read, Book
     can [:read, :create], Review
-    can [:update, :destroy], Review, user_id: user.id
+    can [:update, :delete], Review, user_id: user.id
   end
 end

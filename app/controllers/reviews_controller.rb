@@ -6,7 +6,8 @@ class ReviewsController < ApplicationController
   def index
     if params[:book_id]
       @book = Book.find(params[:book_id])
-      @reviews = @book.reviews
+      @q = @book.reviews.ransack(params[:q])
+      @reviews = @q.result(distinct: true)
       @show_user = true
       @show_book = false
     elsif params[:user_id]

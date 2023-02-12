@@ -6,9 +6,31 @@
     <% if can? :delete, Book %><%= button_to "Delete", @book, form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-danger btn-sm" %><% end %>
   </div>
 </div>
-
-<% @reviews.each do |review| %>
-  <%= render review %>
-<% end %>
-
-<%= link_to "Back to books", books_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'books/search_reviews' %>
+    </div>
+    <div class="col-md-10">
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th>Username</th>
+          <th>Rating</th>
+          <th>Review</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td><%= review.user.username%></td>
+              <td><%= review.rating %></td>
+              <td><%= review.review %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to "Back to books", books_path %>
+    </div>
+  </div>
+</div>

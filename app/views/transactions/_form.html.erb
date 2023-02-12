@@ -20,22 +20,20 @@
         <%= form.label :total_price %>
         <%= form.text_field :total_price, :id => 'total_price', :readonly => true, class: 'form-control' %>
     </div>
-
     <div class="col-12">
         <%= form.label :address %>
-        <%= form.text_area :address, class: 'form-control' %>
+        <%= form.text_area :address, class: 'form-control', value: current_user.address %>
     </div>
 
     <div class="col-md-6">
       <%= form.label :phone_number %>
-      <%= form.text_field :phone_number, class: 'form-control' %>
+      <%= form.text_field :phone_number, class: 'form-control', value: current_user.phone_number %>
     </div>
 
     <div class="col-md-6">
       <%= form.label :credit_card_number %>
-      <%= form.text_field :credit_card_number, class: 'form-control' %>
+      <%= form.text_field :credit_card_number, class: 'form-control', value: current_user.credit_card_number %>
     </div>
-
     <div class="col-12">
       <%= form.hidden_field :book_id, value: @book.id %>
     </div>

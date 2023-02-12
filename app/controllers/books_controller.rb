@@ -11,7 +11,8 @@ class BooksController < ApplicationController
   # GET /books/1 or /books/1.json
   def show
     @book = Book.find(params[:id])
-    @reviews = @book.reviews
+    @q = @book.reviews.ransack(params[:q])
+    @reviews = @q.result(distinct: true)
     @show_user = true
     @show_book = false
   end

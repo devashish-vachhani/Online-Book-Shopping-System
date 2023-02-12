@@ -1,0 +1,8 @@
+<%= search_form_for @q, url: book_path do |f| %>
+  <div class="form-group">
+    <%= f.label :user_username_cont, "Search by username" %>
+    <%= f.search_field :user_username_cont, class: 'form-control' %>
+  </div>
+  <%= link_to "Clear", request.path, class: "btn btn-default" %>
+  <%= f.submit "Search", class: 'btn btn-primary btn-sm' %>
+<% end %>
