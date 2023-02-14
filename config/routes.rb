@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  resources :books
   resources :reviews
   resources :transactions
+  resource :shopping_cart, only: [:show, :update]
+  resources :shopping_cart_items
   root to: 'landing#index'
   get 'dashboard/index', as: :authenticated_root
-  resources :books
 
   namespace :admins do
     resources :users, :controller => "users"

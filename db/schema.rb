@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_09_014228) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_14_051850) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -46,6 +46,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_014228) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "shopping_cart_items", force: :cascade do |t|
+    t.integer "owner_id"
+    t.string "owner_type"
+    t.integer "quantity"
+    t.integer "item_id"
+    t.string "item_type"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shopping_carts_on_user_id"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "credit_card_number"
     t.text "address"
@@ -56,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_014228) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "book_id", null: false
+    t.string "transaction_number"
     t.index ["book_id"], name: "index_transactions_on_book_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
@@ -79,6 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_014228) do
 
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
+  add_foreign_key "shopping_carts", "users"
   add_foreign_key "transactions", "books"
   add_foreign_key "transactions", "users"
 end

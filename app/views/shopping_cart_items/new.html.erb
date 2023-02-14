@@ -1,0 +1,45 @@
+<%= form_with(model: @shopping_cart_item, class: 'row g-3') do |form| %>
+  <div class="col-md-12">
+    <%= form.label :name %>
+    <%= form.text_field :name, value: @book.name, disabled: true, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-12">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, min: 1, max: @book.stock, id: 'quantity', onchange: "calculateTotalPrice();", class: 'form-control', required: true %>
+  </div>
+  <div class="col-md-12">
+    <%= form.label :total_price %>
+    <%= form.text_field :total_price, :id => 'total_price', :readonly => true, class: 'form-control' %>
+  </div>
+  <div class="col-12">
+    <%= form.hidden_field :book_id, value: @book.id %>
+  </div>
+  <div class="col-6'">
+    <%= form.submit "Add to cart", class: 'btn btn-primary add-to-cart-form-button' %>
+  </div>
+  <div class="col-6'">
+    <%= link_to "Back to books", books_path, class: 'back-button' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+    function calculateTotalPrice() {
+        var price = "<%= @book.price %>";
+        document.getElementById('total_price').value = document.getElementById('quantity').value * price;
+    }
+</script>
+
+<script>
+    document.querySelector('.back-button').addEventListener('click', function() {
+        document.querySelector('#add-to-cart-button').textContent = "Add to Cart";
+        document.querySelector('#add-to-cart-button').removeAttribute("disabled");
+    });
+</script>
+
+<script>
+    document.querySelector('.add-to-cart-form-button').addEventListener('click', function() {
+        document.querySelector('#add-to-cart-button').textContent = "Added to Cart";
+        document.querySelector('#add-to-cart-button').setAttribute("disabled", "disabled");
+    });
+</script>

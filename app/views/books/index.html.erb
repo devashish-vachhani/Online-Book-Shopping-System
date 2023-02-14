@@ -26,12 +26,12 @@
             <td><%= book.name %></td>
             <td><%= book.author %></td>
             <td><%= book.publisher %></td>
-            <td>$<%= book.price %></td>
+            <td><%= book.price %></td>
             <td><%= book.stock %></td>
             <td><%= book.average_rating %></td>
             <td><%= link_to 'Show', book_path(book), class:'btn btn-primary btn-sm' %></td>
-            <% if user_signed_in? %><td><%= link_to_if book.stock > 0, 'Buy', new_transaction_path(:book_id => book.id), class: 'btn btn-primary btn-sm' %></td><% end %>
-            <td><%= link_to 'Write a review', new_review_path(:book_id => book.id), class: 'btn btn-primary btn-sm' %></td>
+            <td><%= link_to "Add to Cart", new_shopping_cart_item_path(:book_id => book.id), class: 'btn btn-primary btn-sm', id:"add-to-cart" %></td>
+            <% if can? :create, Review %>><td><%= link_to 'Write a review', new_review_path(:book_id => book.id), class: 'btn btn-primary btn-sm' %></td><% end %>
             <% if can? :update, book %><td><%= link_to 'Edit', edit_book_path(book), class:'btn btn-primary btn-sm' %></td><% end %>
             <% if can? :delete, book %><td><%= button_to "Delete", book, form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-danger btn-sm" %></td><% end %>
           </tr>
@@ -42,3 +42,16 @@
     </div>
   </div>
 </div>
+
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        $('.add-to-cart-btn').click(function() {-->
+<!--            // Change the button text to "Added to cart"-->
+<!--            $(this).text('Added to cart');-->
+
+<!--            // Change the button class to green-->
+<!--            $(this).removeClass('btn-primary');-->
+<!--            $(this).addClass('btn-success');-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->

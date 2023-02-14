@@ -1,4 +1,4 @@
-<%= form_with(model: transaction, class: "row g-3") do |form| %>
+<%= form_with(model: transaction, html: {class: "row g-3"}) do |form| %>
   <% if transaction.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
@@ -10,16 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-    <div class="col-md-6">
-        <%= form.label :quantity %>
-        <%= form.number_field :quantity, :id => 'quantity', min: 1, max: @book.stock, onchange: "calculateTotalPrice();", class: 'form-control' %>
-    </div>
-
-    <div class="col-md-6">
-        <%= form.label :total_price %>
-        <%= form.text_field :total_price, :id => 'total_price', :readonly => true, class: 'form-control' %>
-    </div>
     <div class="col-12">
         <%= form.label :address %>
         <%= form.text_area :address, class: 'form-control', value: current_user.address %>
@@ -34,17 +24,9 @@
       <%= form.label :credit_card_number %>
       <%= form.text_field :credit_card_number, class: 'form-control', value: current_user.credit_card_number %>
     </div>
-    <div class="col-12">
-      <%= form.hidden_field :book_id, value: @book.id %>
+
+    <div class="col-md-12">
+      <%= form.submit "Place your order", class: 'btn btn-warning' %>
     </div>
 
-    <div class="col-12'">
-      <%= form.submit class: 'btn btn-primary' %>
-    </div>
 <% end %>
-<script type="text/javascript">
-    function calculateTotalPrice() {
-        var price = "<%= @book.price %>";
-        document.getElementById('total_price').value = document.getElementById('quantity').value * price;
-    }
-</script>

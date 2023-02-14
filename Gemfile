@@ -16,6 +16,7 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'jquery-turbolinks'
 gem 'cancancan'
 gem 'ransack'
+gem 'acts_as_shopping_cart', '~> 0.4.0'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

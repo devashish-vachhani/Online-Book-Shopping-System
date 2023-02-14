@@ -14,17 +14,20 @@ class Ability
   end
 
   def common_rules(user_or_admin)
+    can :read, Book
+    can :read, Review
   end
 
   def admin_rules(admin)
     can :manage, Book
     can :manage, User
-    can :manage, Review
+    can :delete, Review
   end
 
   def user_rules(user)
-    can :read, Book
-    can [:read, :create], Review
+    can :create, Review
     can [:update, :delete], Review, user_id: user.id
+    # can :manage, ShoppingCart
+    # can :manage, ShoppingCartItem
   end
 end

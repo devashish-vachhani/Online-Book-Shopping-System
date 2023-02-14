@@ -1,6 +1,6 @@
 <div id="<%= dom_id transaction %>">
-
-    <td><%= Book.find(transaction.book_id).name %></td>
+    <td><%= transaction.transaction_number %></td>
+    <td><%= transaction.book.name %></td>
     <td><%= transaction.quantity %></td>
     <td><%= transaction.total_price %></td>
     <td><%= transaction.credit_card_number %></td>
