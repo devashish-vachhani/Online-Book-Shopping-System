@@ -1,5 +1,5 @@
 class ShoppingCartsController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource
   def show
     @cart = current_user.shopping_cart
     @cart_items = @cart.shopping_cart_items if @cart.present? && @cart.shopping_cart_items.present?

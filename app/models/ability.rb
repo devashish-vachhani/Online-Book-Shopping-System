@@ -27,7 +27,7 @@ class Ability
   def user_rules(user)
     can :create, Review
     can [:update, :delete], Review, user_id: user.id
-    # can :manage, ShoppingCart
-    # can :manage, ShoppingCartItem
+    can :manage, ShoppingCart
+    can :manage, ShoppingCartItem
   end
 end

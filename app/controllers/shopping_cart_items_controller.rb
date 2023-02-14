@@ -1,5 +1,5 @@
 class ShoppingCartItemsController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource
   def new
     @shopping_cart_item = ShoppingCartItem.new
     if @book.nil?
@@ -28,5 +28,9 @@ class ShoppingCartItemsController < ApplicationController
       @book.update(stock: @book.stock + @shopping_cart_item.quantity)
     end
     redirect_to shopping_cart_path
+  end
+
+  def shopping_cart_item_params
+    params.require(:shopping_cart_item).permit(:quantity)
   end
 end

@@ -32,7 +32,7 @@
 <% end %>
 <div class="row">
   <div class="col-md-6 text-md-start">
-    <%= link_to "Back to books", books_path %>
+    <%= link_to "Go to books", books_path %>
   </div>
   <div class="col-md-6 text-md-end">
     <% if @cart.present? and @cart_items.present? %><%= link_to 'Proceed to checkout', new_transaction_path, class: 'btn btn-primary' %><% end %>

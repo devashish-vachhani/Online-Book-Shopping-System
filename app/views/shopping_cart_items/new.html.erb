@@ -15,11 +15,11 @@
   <div class="col-12">
     <%= form.hidden_field :book_id, value: @book.id %>
   </div>
-  <div class="col-6'">
-    <%= form.submit "Add to cart", class: 'btn btn-primary add-to-cart-form-button' %>
+  <div class="col-12'">
+    <%= form.submit "Add to cart", class: 'btn btn-primary' %>
   </div>
-  <div class="col-6'">
-    <%= link_to "Back to books", books_path, class: 'back-button' %>
+  <div class="col-12'">
+    <%= link_to "Back to books", books_path %>
   </div>
 <% end %>
 
@@ -28,18 +28,4 @@
         var price = "<%= @book.price %>";
         document.getElementById('total_price').value = document.getElementById('quantity').value * price;
     }
-</script>
-
-<script>
-    document.querySelector('.back-button').addEventListener('click', function() {
-        document.querySelector('#add-to-cart-button').textContent = "Add to Cart";
-        document.querySelector('#add-to-cart-button').removeAttribute("disabled");
-    });
-</script>
-
-<script>
-    document.querySelector('.add-to-cart-form-button').addEventListener('click', function() {
-        document.querySelector('#add-to-cart-button').textContent = "Added to Cart";
-        document.querySelector('#add-to-cart-button').setAttribute("disabled", "disabled");
-    });
 </script>

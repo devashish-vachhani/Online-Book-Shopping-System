@@ -11,6 +11,11 @@
     </div>
   <% end %>
     <div class="col-12">
+    <%= form.label :transaction_number %>
+    <%= form.text_field :transaction_number, class: 'form-control', value: @transaction_number, readonly: true %>
+    </div>
+
+    <div class="col-12">
         <%= form.label :address %>
         <%= form.text_area :address, class: 'form-control', value: current_user.address %>
     </div>
