@@ -1,41 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
 ## Flow
 
-### The Landing Page
-1. First the landing page opens. Here you can either sign up as a user or login in as an admin or user.
-2. - Sign up: This is the user sign up page. After filling in the required fields (Beware! There are validations in place), the user is taken to the user dashboard.
-- - Log in as user: This is the user log in page. After entering the username and password, the user is taken to the user dashboard.
-- - Log in as admin: This is the admin log in page. After entering the username and password, the user is taken to the admin dashboard.
+### Landing Page
+On the landing page, you can either sign up as a user, log in as a user or login in as an admin.
+
+### Sign up/Log In Page
+1. Sign up as user: After a user fills in the required details, they are redirected to the user dashboard.
+2. Log in as user: The user must enter his/her username and password, and they are redirected to the user dashboard if its successfully authenticated.
+3. Log in as admin: The admin must enter his/her username and password, and they are redirected to the admin dashboard if its successfully authenticated.
 
 ### The User Dashboard
-
-- This page has a navigation bar. The user can return to the dashboard, edit profile, view the cart or sign out using the navbar. The username can also be seen here.
-- The user can view, search, buy or review books using the first link.
-- The user can view purchase history using the second link.
-- The user can view their reviews using the third link.
-- The user can view and search other users' review using the fourth link.
+1. This page has a navigation bar. The user can return to the dashboard, edit profile, view the cart or sign out using the navbar. The username can also be seen here.
+2. The user can view, search, buy or review books using the first link.
+3. The user can view purchase history using the second link.
+4. The user can view their reviews using the third link.
+5. The user can view and search other users' review using the fourth link.
 
 ### The Admin Dashboard
 
