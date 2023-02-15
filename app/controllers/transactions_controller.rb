@@ -7,8 +7,6 @@ class TransactionsController < ApplicationController
   def index
     if current_user.id != nil
       @transactions = Transaction.where(user_id: current_user.id)
-    else
-      @transactions = Transaction.all
     end
   end
 

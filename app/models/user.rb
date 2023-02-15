@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :transactions, dependent: :destroy
-  has_one :shopping_cart
+  has_one :shopping_cart, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :authentication_keys => [:username]

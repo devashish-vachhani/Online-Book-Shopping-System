@@ -21,13 +21,15 @@ class Ability
   def admin_rules(admin)
     can :manage, Book
     can :manage, User
-    can :delete, Review
+    can :destroy, Review
   end
 
   def user_rules(user)
     can :create, Review
-    can [:update, :delete], Review, user_id: user.id
+    can [:update, :destroy], Review, user_id: user.id
     can :manage, ShoppingCart
     can :manage, ShoppingCartItem
+    can :create, Transaction
+    can :read, Transaction, user_id: user.id
   end
 end

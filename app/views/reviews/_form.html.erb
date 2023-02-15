@@ -12,7 +12,7 @@
   <% end %>
     <div class="col-12">
       <%= form.label :book_name, "Book" %>
-      <%= form.text_field :book_name, value: @book.name, disabled: true, class: 'form-control' %>
+      <%= form.text_field :book_name, value: @book.name, readonly: true, class: 'form-control' %>
     </div>
     <div class="col-12">
       <%= form.label :rating %>
@@ -20,7 +20,7 @@
     </div>
     <div class="col-12">
       <%= form.label :review %>
-      <%= form.text_area :review, class:'form-control' %>
+      <%= form.text_area :review, class:'form-control', required: true %>
     </div>
     <div class="form-group">
       <%= form.hidden_field :book_id, value: @book.id %>

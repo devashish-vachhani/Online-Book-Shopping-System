@@ -12,13 +12,9 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
     <div class="container">
-      <br/>
       <%= yield %>
-      <% if notice %>
-        <%= render 'layouts/alerts' %>
-      <% end %>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
