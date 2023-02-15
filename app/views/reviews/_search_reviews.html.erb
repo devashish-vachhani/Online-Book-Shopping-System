@@ -1,10 +1,9 @@
 <%= search_form_for @q, url: reviews_path do |f| %>
-  <%= hidden_field_tag :user_id, params[:user_id] if params[:user_id] %>
-  <%= hidden_field_tag :book_id, params[:book_id] if params[:book_id] %>
+  <%= hidden_field_tag :reviewable, params[:reviewable] if params[:reviewable] %>
   <% if @show_user %>
     <div class="form-group">
-      <%= f.label :user_username_cont, "Search by username" %>
-      <%= f.search_field :user_username_cont, class: 'form-control' %>
+      <%= f.label :reviewable_username_cont, "Search by username" %>
+      <%= f.search_field :reviewable_username_cont, class: 'form-control' %>
     </div>
   <% end %>
   <% if @show_book %>
@@ -13,6 +12,6 @@
     <%= f.search_field :book_name_cont, class: 'form-control' %>
   </div>
   <% end %>
-  <%= link_to "Clear", reviews_path(user_id: params[:user_id]), class: "btn btn-default" %>
+  <%= link_to "Clear", reviews_path(reviewable: params[:reviewable]), class: "btn btn-default" %>
   <%= f.submit "Search", class: 'btn btn-primary btn-sm' %>
 <% end %>

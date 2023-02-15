@@ -4,15 +4,8 @@ class ReviewsController < ApplicationController
 
   # GET /reviews or /reviews.json
   def index
-    if params[:book_id]
-      @book = Book.find(params[:book_id])
-      @q = @book.reviews.ransack(params[:q])
-      @reviews = @q.result(distinct: true)
-      @show_user = true
-      @show_book = false
-    elsif params[:user_id]
-      @user = User.find(params[:user_id])
-      @q = @user.reviews.ransack(params[:q])
+    if params[:reviewable]
+      @q = user_signed_in? ? current_user.reviews.ransack(params[:q]) : current_admin.reviews.ransack(params[:q])
       @reviews = @q.result(distinct: true)
       @show_user = false
       @show_book = true
@@ -38,6 +31,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    session[:previous_page_url] = request.referer
     if @book.nil?
       @book = @review.book
     end
@@ -46,7 +40,7 @@ class ReviewsController < ApplicationController
   # POST /reviews or /reviews.json
   def create
     @review = Review.new(review_params)
-    @review.user = current_user
+    @review.reviewable = user_signed_in? ? current_user : current_admin
 
     respond_to do |format|
       if @review.save
@@ -63,8 +57,8 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to request.referrer, notice: 'Review was successfully updated.' }
-        format.json { render json: { redirect_to: request.referrer } }
+        format.html { redirect_to session.delete(:previous_page_url) || authenticated_root_path, notice: 'Review was successfully updated.' }
+        format.json { render json: { redirect_to: session.delete(:previous_page_url) || authenticated_root_path } }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @review.errors, status: :unprocessable_entity }

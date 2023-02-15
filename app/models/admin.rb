@@ -4,5 +4,5 @@ class Admin < ApplicationRecord
 
   validates :email, :name, presence: true
   validates :username, :password, :password_confirmation, presence: true, on: :create
-
+  has_many :reviews, as: :reviewable, dependent: :destroy
 end

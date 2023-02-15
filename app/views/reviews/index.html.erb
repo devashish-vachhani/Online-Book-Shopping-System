@@ -24,7 +24,7 @@
           <% @reviews.each do |review| %>
             <tr>
               <% if @show_user %>
-                <td><%= review.user.username %></td>
+                <td><%= review.reviewable.username %></td>
               <% end %>
               <% if @show_book %>
                 <td><%= review.book.name %></td>

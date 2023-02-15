@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_010101) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_15_164204) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,10 +40,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_010101) do
     t.text "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
     t.integer "book_id", null: false
+    t.string "reviewable_type", null: false
+    t.integer "reviewable_id", null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable"
   end
 
   create_table "shopping_cart_items", force: :cascade do |t|
@@ -98,7 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_010101) do
   end
 
   add_foreign_key "reviews", "books"
-  add_foreign_key "reviews", "users"
   add_foreign_key "shopping_carts", "users"
   add_foreign_key "transactions", "books"
   add_foreign_key "transactions", "users"
