@@ -13,11 +13,11 @@
   </div>
   <div class="col-md-6">
     <%= form.label :price %>
-    <%= form.number_field :price, class: 'form-control', step: 0.01, required: true %>
+    <%= form.number_field :price, max:100000, class: 'form-control', step: 0.01, required: true %>
   </div>
   <div class="col-md-6">
     <%= form.label :stock %>
-    <%= form.number_field :stock, class: 'form-control', required: true %>
+    <%= form.number_field :stock, max:10000,  class: 'form-control', required: true %>
   </div>
   <div class="col-12">
   <%= form.submit class:'btn btn-primary'%>

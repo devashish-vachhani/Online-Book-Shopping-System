@@ -2,6 +2,9 @@ class Book < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :transactions, dependent: :nullify
   validates :name, :author, :publisher, :price, :stock, presence: true
+  validates_inclusion_of :price, :stock, in: 0..100000
+
+
 
   def average_rating
     reviews.average(:rating)

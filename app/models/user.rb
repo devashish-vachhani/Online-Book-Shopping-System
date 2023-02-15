@@ -11,4 +11,7 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true
   validates :phone_number, length: { is: 10 }
   validates :credit_card_number, length: { is: 16 }
+  validates_numericality_of :phone_number, :credit_card_number, :only_integer => true, message: "invalid"
+
+
 end
