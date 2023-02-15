@@ -10,20 +10,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><%= link_to "Dashboard", authenticated_root_path, class:"nav-link active" %></li>
       <% if admin_signed_in? %>
-          <li class="nav-item"><%= link_to "Edit Profile", edit_admin_registration_path, class:"nav-link active" %></li>
-          <li class="nav-item"><%= link_to "Sign out", destroy_admin_session_path, 'data-turbo-method': :delete, class:"nav-link active" %></li>
           <li class="nav-item me-auto">
             <a class="nav-link">Signed in as: Admin</a>
           </li>
+          <li class="nav-item"><%= link_to "Edit Profile", edit_admin_registration_path, class:"nav-link active" %></li>
+          <li class="nav-item"><%= link_to "Sign out", destroy_admin_session_path, 'data-turbo-method': :delete, class:"nav-link active" %></li>
       <% elsif user_signed_in?%>
-          <li class="nav-item"><%= link_to "Cart", shopping_cart_path, class:"nav-link active" %></li>
-          <li class="nav-item"><%= link_to "Edit Profile", edit_user_registration_path, class:"nav-link active" %></li>
-          <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete, class:"nav-link active" %></li>
           <li class="nav-item me-auto">
             <a class="nav-link">Signed in as: <%=current_user.username%></a>
           </li>
+          <li class="nav-item"><%= link_to "Cart", shopping_cart_path, class:"nav-link active" %></li>
+          <li class="nav-item"><%= link_to "Edit Profile", edit_user_registration_path, class:"nav-link active" %></li>
+          <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete, class:"nav-link active" %></li>
       <% end %>
       </ul>
     </div>

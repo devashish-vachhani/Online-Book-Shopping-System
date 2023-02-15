@@ -1,7 +1,5 @@
 # README
 
-## Flow
-
 ### Landing Page
 On the landing page, you can either sign up as a user, log in as a user or login in as an admin.
 
@@ -10,26 +8,16 @@ On the landing page, you can either sign up as a user, log in as a user or login
 2. Log in as user: The user must enter his/her username and password, and they are redirected to the user dashboard if its successfully authenticated.
 3. Log in as admin: The admin must enter his/her username and password, and they are redirected to the admin dashboard if its successfully authenticated.
 
-### The User Dashboard
-1. This page has a navigation bar. The user can return to the dashboard, edit profile, view the cart or sign out using the navbar. The username can also be seen here.
-2. The user can view, search, buy or review books using the first link.
-3. The user can view purchase history using the second link.
-4. The user can view their reviews using the third link.
-5. The user can view and search other users' review using the fourth link.
+### User Dashboard
+1. On the top of the page, there is a navbar. The "Online Book Shopping" will take the user to his/her dashboard. Other options are "Edit Profile", "Cart" and "Sign out".
+2. The **View/search/buy/review** link redirects the user to the Books page where he/she can view books, search books using author or average rating, add books to their cart or write a review for books.
+3. A user can view their past purchase history using the **View purchase history** link
+4. A user can view his/her own reviews using the **List my reviews** link and can search his/her reviews by book name
+5. A user can review his/her as well as other users' and admin's reviews using the **View/search reviews** link and can search reviews by username or book name.
 
-### The Admin Dashboard
-
-- This page has a navigation bar. The admin can return to the dashboard, edit profile or sign out using the navbar. The admin username can also be seen here.
-- The admin can create, edit or delete users using the first link.
-- The admin can create, edit or delete books using the second link.
-- The user can create, edit or delete reviews using the third link.
-
-### create/edit/delete user
-In create/edit/delete user you can edit the existing users by changing all the attributes of a user and update existing user, you can create a new user by entering information in required fields adhering to given restrictions or you can also entirely delete an account of existing user. If a user is deleted all the reviews of that user are also deleted.
-
-### create/edit/delete book
-Under Admin profile you can create new book, where by entering book name, author, publisher, price and stock new entry of a book is created. You can also show, edit and delete an existing entry of a book. Show allows to take a look at all the users and their reviews for that particular book. You can also Search a book by its Author name and Rating. Search by rating displays the all the books above certain average rating. If a book is deleted all the reviews associated with that book are also deleted.
-
-### create/edit/delete review
-Admins also have access to create/delete/edit reviews. We can search a review by book or username.
+### Admin Dashboard
+1. The admin has a navbar which is the same as the user's navbar
+2. The admin can Create/view/edit/delete users
+3. The admin can Create/view/edit/delete books
+4. The admin can Create/view/edit/delete reviews
 
