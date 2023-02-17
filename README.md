@@ -1,5 +1,9 @@
 # README
 
+admin credentials:
+username: admin
+password: admin
+
 ### Landing Page
 On the landing page, you can either sign up as a user, log in as a user or login in as an admin.
 
