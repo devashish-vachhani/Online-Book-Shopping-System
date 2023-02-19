@@ -1,27 +1,69 @@
-# README
+# **CSC/ECE 517 - Object Oriented Design and Development**
 
-admin credentials:
-username: admin
-password: admin
+## **Team Members**
+| Name               | Unity ID |
+|--------------------|----------- |
+| Devashish Vachhani | dvachha |
+| Neha Kale          | nkale2 |
+| Girish Wangikar    | gwangik |
 
-### Landing Page
-On the landing page, you can either sign up as a user, log in as a user or login in as an admin.
+## **Run the Online Book Shopping System**
+- The deployed application is accessible at http://152.7.178.109:3000
+- To run the project locally,
+  - Clone the repository
+  - cd into app/
+  - run _bundle install_
+  - run _rails db:migrate_
+  - run _rails server_
 
-### Sign up/Log In Page
-1. Sign up as user: After a user fills in the required details, they are redirected to the user dashboard.
-2. Log in as user: The user must enter his/her username and password, and they are redirected to the user dashboard if its successfully authenticated.
-3. Log in as admin: The admin must enter his/her username and password, and they are redirected to the admin dashboard if its successfully authenticated.
+## **Log in as admin**
+- The pre-configured admin credentials are:
+  - username: admin
+  - password: admin
+- After logging in as admin, you will be directed to the admin dashboard. An admin can:
+  - Edit his/her own profile
+  - Create/view/edit/delete users
+  - Create/view/edit/delete books
+  - Create/view/edit/delete reviews
+  - Search books by author or average rating above some value
+  - Search reviews by username or book name
+  - Sign out
 
-### User Dashboard
-1. On the top of the page, there is a navbar. The "Online Book Shopping" will take the user to his/her dashboard. Other options are "Edit Profile", "Cart" and "Sign out".
-2. The **View/search/buy/review** link redirects the user to the Books page where he/she can view books, search books using author or average rating, add books to their cart or write a review for books.
-3. A user can view their past purchase history using the **View purchase history** link
-4. A user can view his/her own reviews using the **List my reviews** link and can search his/her reviews by book name
-5. A user can review his/her as well as other users' and admin's reviews using the **View/search reviews** link and can search reviews by username or book name.
+## **Sign up/Log in as user**
+- A user can sign up themselves. After signing up/logging in as user, you will be directed to the user dashboard. A user can:
+  - Edit his/her own profile
+  - Delete their own account
+  - View the books available on the website
+  - Search books by author or average rating above some value
+  - Add/remove a book to/from his/her cart
+  - Buy a book or books
+  - Check their own purchase history
+  - Write a review of a book
+  - Edit the review he/she wrote
+  - Search reviews by username or book name
+  - Sign out
 
-### Admin Dashboard
-1. The admin has a navbar which is the same as the user's navbar
-2. The admin can Create/view/edit/delete users
-3. The admin can Create/view/edit/delete books
-4. The admin can Create/view/edit/delete reviews
+## **Validations**
+- User
+  - username, email and name are always required. password is required while creating a new account
+  - phone number should be 10 digits (or blank) and credit card number should be 16 digits (or blank)
+- Book
+  - name, author, publisher, price and stock are required
+- Review
+  - rating and review are required
+- Transaction
+  - address, phone number and credit card number are required
+
+## **Cases we have considered**
+- A user should have a unique username and email address
+- When a book gets destroyed,
+  - it is removed from all shopping carts that contain that book
+  - its dependent reviews are destroyed
+  - its dependent transactions are nullified
+- When a user gets destroyed,
+  - its dependent reviews are destroyed
+  - its dependent transactions are destroyed
+- A user/admin cannot access resources he/she is not allowed to by changing the url
+- While creating a new transaction, the form is pre-filled with information from the user's profile
+- Race condition when multiple users try to buy the same book at the same time
 

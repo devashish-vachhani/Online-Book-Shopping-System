@@ -1,6 +1,4 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Reviews</h1>
+<h1><%= @show_user ? "Reviews" : "My Reviews" %></h1>
 <div class="container">
   <div class="row">
       <div class="col-md-2">
@@ -31,13 +29,17 @@
               <% end %>
               <td><%= review.rating %></td>
               <td><%= review.review %></td>
-              <% if can? :update, review %><td><%= link_to 'Edit', edit_review_path(review), class:'btn btn-primary btn-sm' %></td><% end %>
-              <% if can? :destroy, review %><td><%= button_to "Delete", review, data: { turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %></td><% end %>
+              <td>
+                <div class="btn-group">
+                  <% if can?(:update, review) %><div class="d-inline-block" style="width: 50%;"><%= link_to 'Edit', edit_review_path(review), class:'btn btn-primary btn-sm' %></div><% end %>
+                  <% if can?(:destroy, review) %><div class="d-inline-block" style="width: 50%;"><%= button_to "Delete", review, data: { turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %></div><% end %>
+                </div>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <%= link_to "Back to dashboard", authenticated_root_path %>
+      <%= link_to "Back to dashboard", authenticated_root_path, class: 'btn btn-secondary' %>
     </div>
   </div>
 </div>

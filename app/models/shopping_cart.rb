@@ -5,4 +5,8 @@ class ShoppingCart < ActiveRecord::Base
   def tax_pct
     0
   end
+
+  def book_in_cart?(book)
+    shopping_cart_items.exists?(item: book)
+  end
 end

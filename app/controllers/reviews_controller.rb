@@ -24,17 +24,14 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
-    if @book.nil?
-      @book = Book.find(params[:book_id])
-    end
+    @book ||= Book.find(params[:book_id])
   end
 
   # GET /reviews/1/edit
   def edit
     session[:previous_page_url] = request.referer
-    if @book.nil?
-      @book = @review.book
-    end
+    @review = Review.find(params[:id])
+    @book ||= @review.book
   end
 
   # POST /reviews or /reviews.json
@@ -47,6 +44,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to book_path(@review.book), notice: "Review was successfully created." }
         format.json { render :show, status: :created, location: @review.book }
       else
+        @book = Book.find(params[:review][:book_id])
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
@@ -60,6 +58,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to session.delete(:previous_page_url) || authenticated_root_path, notice: 'Review was successfully updated.' }
         format.json { render json: { redirect_to: session.delete(:previous_page_url) || authenticated_root_path } }
       else
+        @book = Book.find(params[:review][:book_id])
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
@@ -87,6 +86,6 @@ class ReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:rating, :review, :book_id)
+      params.require(:review).permit(:rating, :review, :book_id, :book_name)
     end
 end

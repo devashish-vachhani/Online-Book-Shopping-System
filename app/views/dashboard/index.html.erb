@@ -1,13 +1,40 @@
-<h1>Dashboard</h1>
+<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <a href="<%= books_path %>" class="card text-center bg-light text-decoration-none" style="height: 100%;">
+        <div class="card-body">
+          <h5 class="card-title text-dark">Books</h5>
+          <p class="card-text text-dark"><%= user_signed_in? ? 'Search, buy or review books' : 'Create, view, update or delete books' %></p>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="<%= user_signed_in? ? transactions_path : admins_users_path %>" class="card text-center bg-light text-decoration-none" style="height: 100%;">
+        <div class="card-body">
+          <h5 class="card-title text-dark"><%= user_signed_in? ? 'Transactions' : 'Users' %></h5>
+          <p class="card-text text-dark"><%= user_signed_in? ? 'View your purchase history' : 'Create, view, update or delete users' %></p>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="<%= user_signed_in? ? reviews_path(:reviewable => current_user) : reviews_path(:reviewable => current_admin) %>" class="card text-center bg-light text-decoration-none" style="height: 100%;">
+        <div class="card-body">
+          <h5 class="card-title text-dark">My Reviews</h5>
+          <p class="card-text text-dark">View, edit or delete your reviews</p>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="<%= reviews_path %>" class="card text-center bg-light text-decoration-none" style="height: 100%;">
+        <div class="card-body">
+          <h5 class="card-title text-dark">Reviews</h5>
+          <p class="card-text text-dark">View and search reviews</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 
-<% if user_signed_in? %>
-  <%= link_to 'View/search/buy/review books', books_path %><br/>
-  <%= link_to 'View purchase history', transactions_path %><br>
-  <%= link_to 'List my reviews', reviews_path(:reviewable => current_user)%><br>
-  <%= link_to 'View/search reviews', reviews_path%>
-<% elsif admin_signed_in? %>
-  <%= link_to 'Create/view/edit/delete users', admins_users_path %><br/>
-  <%= link_to 'Create/view/edit/delete books', books_path %><br/>
-  <%= link_to 'Create/view/edit/delete reviews', reviews_path%><br/>
-  <%= link_to 'List my reviews', reviews_path(:reviewable => current_admin)%><br>
-<% end %>
+
+
+

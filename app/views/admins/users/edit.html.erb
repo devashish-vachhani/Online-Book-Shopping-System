@@ -1,11 +1,13 @@
 <div class="card">
+
   <div class="card-header">
     <h4>Edit user's profile</h4>
   </div>
 
   <div class="card-body">
-    <%= render "form", submit_text: 'Update account' %>
+    <%= render "form", submit_text: 'Update account', user: @user %>
     <br/>
     <%= link_to "Back", :back %>
   </div>
+
 </div>

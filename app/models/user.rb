@@ -9,9 +9,7 @@ class User < ApplicationRecord
   validates :username, :email, :name, presence: true
   validates :password, :password_confirmation, presence: true, on: :create
   validates :username, :email, uniqueness: true
-  validates :phone_number, length: { is: 10 }
-  validates :credit_card_number, length: { is: 16 }
-  validates_numericality_of :phone_number, :credit_card_number, :only_integer => true, message: 'invalid value'
-
+  validates :phone_number, length: { is: 10 }, allow_blank: true, numericality: { only_integer: true }
+  validates :credit_card_number, length: { is: 16 }, allow_blank: true, numericality: { only_integer: true }
 
 end

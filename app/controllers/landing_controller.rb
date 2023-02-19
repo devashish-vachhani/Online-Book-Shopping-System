@@ -1,5 +1,6 @@
 class LandingController < ApplicationController
-  # skip_before_action :authenticate_user!, :only => [:index]
+  include Accessible
+  before_action :check_resource
   def index
   end
 end

@@ -1,47 +1,54 @@
-<%= form_for([:admins, @user], html: { class: "row g-3" }) do |f| %>
-
+<%= form_with(model: [:admins, user], html: { class: "row g-3" }) do |f| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="col-md-6">
     <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true, class:"form-control", required: true %>
+    <%= f.text_field :name, autofocus: true, class:"form-control" %>
   </div>
   <div class="col-md-6">
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, class:"form-control", required: true %>
+    <%= f.email_field :email, autofocus: true, class:"form-control" %>
   </div>
   <div class="col-12">
     <%= f.label :address %>
-    <%= f.text_area :address, autofocus: true, class:"form-control", required: true %>
+    <%= f.text_area :address, autofocus: true, class:"form-control" %>
   </div>
   <div class="col-md-6">
     <%= f.label :phone_number %>
-    <%= f.text_field :phone_number, autofocus: true, class:"form-control", required: true %>
+    <%= f.text_field :phone_number, autofocus: true, class:"form-control" %>
     <em>(10 characters)</em>
   </div>
   <div class="col-md-6">
     <%= f.label :credit_card_number %>
-    <%= f.text_field :credit_card_number, autofocus: true, class:"form-control", required: true %>
+    <%= f.text_field :credit_card_number, autofocus: true, class:"form-control" %>
     <em>(16 characters)</em>
   </div>
   <div class="col-md-4">
     <%= f.label :username %>
-    <%= f.text_field :username, autofocus: true, class:"form-control", required: true %>
+    <%= f.text_field :username, autofocus: true, class:"form-control" %>
   </div>
   <div class="col-md-4">
-    <% if action_name == "new" %>
+    <% if user.new_record? %>
       <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "new-password", class:"form-control", required: true %>
+      <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
     <% else %>
       <%= f.label :password, "New Password (leave blank to keep current password)" %>
       <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
     <% end %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>
+    <em>(5 characters minimum)</em>
   </div>
   <div class="col-md-4">
-    <% if action_name == "new" %>
+    <% if user.new_record? %>
       <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", required: true %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
     <% else %>
       <%= f.label :password_confirmation, "New Password confirmation" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>

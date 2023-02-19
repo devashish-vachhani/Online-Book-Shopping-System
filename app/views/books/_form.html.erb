@@ -1,23 +1,33 @@
 <%= form_with(model: book, html: { class: "row g-3" }) do |form| %>
+  <% if book.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+      <ul>
+        <% book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="col-12">
     <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control', required: true %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
   <div class="col-md-6">
     <%= form.label :author %>
-    <%= form.text_field :author, class: 'form-control', required: true %>
+    <%= form.text_field :author, class: 'form-control' %>
   </div>
   <div class="col-md-6">
     <%= form.label :publisher %>
-    <%= form.text_field :publisher, class: 'form-control', required: true %>
+    <%= form.text_field :publisher, class: 'form-control' %>
   </div>
   <div class="col-md-6">
     <%= form.label :price %>
-    <%= form.number_field :price, class: 'form-control', step: 0.01, required: true %>
+    <%= form.number_field :price, class: 'form-control', step: 0.01 %>
   </div>
   <div class="col-md-6">
     <%= form.label :stock %>
-    <%= form.number_field :stock, class: 'form-control', required: true %>
+    <%= form.number_field :stock, class: 'form-control' %>
   </div>
   <div class="col-12">
   <%= form.submit class:'btn btn-primary'%>
