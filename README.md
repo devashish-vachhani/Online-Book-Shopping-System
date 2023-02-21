@@ -67,3 +67,8 @@
 - While creating a new transaction, the form is pre-filled with information from the user's profile
 - Race condition is taken care of when multiple users try to buy the same book at the same time
 
+## **RSpec testing**
+- The RSpec testing is performed thoroughly for the Book model and the BooksController
+- To run the tests,
+  - `rake db:migrate RAILS_ENV=test`
+  - `bundle exec rspec`
