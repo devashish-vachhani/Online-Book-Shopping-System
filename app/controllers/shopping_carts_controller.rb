@@ -2,7 +2,7 @@ class ShoppingCartsController < ApplicationController
   load_and_authorize_resource
   def show
     @shopping_cart = current_user.shopping_cart || current_user.create_shopping_cart
-    @shopping_cart_items = @shopping_cart.shopping_cart_items if @shopping_cart.present? && @shopping_cart.shopping_cart_items.present?
+    @shopping_cart_items = @shopping_cart.shopping_cart_items
   end
 
   def destroy
