@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   include Accessible
   skip_before_action :check_resource, except: [:new, :create]
+  skip_before_action :authenticate_user_or_admin!
 
   protected
 

@@ -17,9 +17,12 @@ gem 'jquery-turbolinks'
 gem 'cancancan'
 gem 'ransack'
 gem 'acts_as_shopping_cart', '~> 0.4.0'
-
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'faker'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -30,4 +33,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails'
 end

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
     protect_from_forgery with: :exception
     rescue_from CanCan::AccessDenied do |_|
       if user_signed_in? || admin_signed_in?
@@ -9,8 +8,8 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    before_action :authenticate_user_or_admin!
     before_action :configure_permitted_parameters, if: :devise_controller?
-
 
     protected
     def configure_permitted_parameters
@@ -27,4 +26,13 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def authenticate_user_or_admin!
+      if current_user
+        authenticate_user!
+      elsif current_admin
+        authenticate_admin!
+      else
+        redirect_to root_path, alert: "You are not authorized to access this page."
+      end
+    end
 end
