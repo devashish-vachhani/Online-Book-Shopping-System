@@ -1,15 +1,13 @@
 class ApplicationController < ActionController::Base
 
     protect_from_forgery with: :exception
-    rescue_from CanCan::AccessDenied do |exception|
+    rescue_from CanCan::AccessDenied do |_|
       if user_signed_in? || admin_signed_in?
         redirect_to authenticated_root_path, alert: "You are not authorized to access this page."
       else
         redirect_to root_path, alert: "You are not authorized to access this page."
       end
     end
-
-    # before_action :authenticate_user!
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 

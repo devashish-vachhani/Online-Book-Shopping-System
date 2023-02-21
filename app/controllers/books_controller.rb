@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   def index
     @q = Book.ransack(params[:q])
     @books = @q.result(distinct:true)
-    @shopping_cart = current_user.shopping_cart || current_user.create_shopping_cart
+    @shopping_cart = current_user.shopping_cart || current_user.create_shopping_cart if user_signed_in?
   end
 
   # GET /books/1 or /books/1.json

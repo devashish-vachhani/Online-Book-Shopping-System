@@ -8,13 +8,13 @@
 | Girish Wangikar    | gwangik |
 
 ## **Run the Online Book Shopping System**
-- The deployed application is accessible at http://152.7.178.109:3000
+- The application is accessible at [VCL deployment](http://152.7.178.109:3000)
 - To run the project locally,
-  - Clone the repository
-  - cd into app/
-  - run _bundle install_
-  - run _rails db:migrate_
-  - run _rails server_
+  - `git clone https://github.ncsu.edu/dvachha/CSC-ECE-517-Assignment-2-Team-H.git`
+  - `cd CSC-ECE-517-Assignment-2-Team-H/app/`
+  - `bundle install`
+  - `rails db:migrate`
+  - `rails server`
 
 ## **Log in as admin**
 - The pre-configured admin credentials are:
@@ -65,5 +65,5 @@
   - its dependent transactions are destroyed
 - A user/admin cannot access resources he/she is not allowed to by changing the url
 - While creating a new transaction, the form is pre-filled with information from the user's profile
-- Race condition when multiple users try to buy the same book at the same time
+- Race condition is taken care of when multiple users try to buy the same book at the same time
 
