@@ -1,5 +1,3 @@
-require 'faker'
-
 FactoryBot.define do
   factory :review do
     association :book, factory: :book
@@ -9,4 +7,3 @@ FactoryBot.define do
     review { Faker::Lorem.paragraph }
   end
 end
-

@@ -1,5 +1,3 @@
-require 'faker'
-
 FactoryBot.define do
   factory :book do
     name { Faker::Book.title }
@@ -9,4 +7,3 @@ FactoryBot.define do
     stock { Faker::Number.between(from: 0, to: 1000) }
   end
 end
-
