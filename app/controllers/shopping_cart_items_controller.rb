@@ -24,7 +24,7 @@ class ShoppingCartItemsController < ApplicationController
 
   def edit
     @shopping_cart_item = ShoppingCartItem.find(params[:id])
-    @book = @shopping_cart_item.item
+    @book ||= @shopping_cart_item.item
   end
 
   def update
