@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   has_many :shopping_cart_items, as: :item, dependent: :destroy
 
   validates :name, :author, :publisher, :price, :stock, presence: true
+  validates :stock, :price, numericality: { greater_than_or_equal_to: 0 }
 
 
   def average_rating
