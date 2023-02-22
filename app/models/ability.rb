@@ -25,7 +25,7 @@ class Ability
   def user_rules(user)
     can :read, Book
     can [:read, :create], Review
-    can [:update, :destroy], Review, reviewable_id: user.id, reviewable_type: "User"
+    can [:update, :destroy], Review, reviewable: user
     can :manage, ShoppingCart, user_id: user.id
     can :create, ShoppingCartItem
     can [:read, :update, :destroy], ShoppingCartItem, owner: { user_id: user.id }
